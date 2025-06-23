@@ -24,7 +24,23 @@ const fetchProducts = async() => {
   return response.rows
 }
 
+const findProductById = async (productId) => {
+  const SQL = `
+  SELECT *
+  FROM products
+  WHERE id = $1
+  `
+  const response = await client.query(SQL, [productId]);
+  if (!response.rows.length) {
+    const error = Error('Product not found');
+    error.status = 404;
+    throw error;
+  }
+  return response.rows[0];
+}
+
 module.exports = {
-  createProduct,
-  fetchProducts
+  fetchProducts,
+  findProductById,
+  createProduct
 }

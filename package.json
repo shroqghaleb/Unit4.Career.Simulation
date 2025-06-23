@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:dev": "JWT=SECRET nodemon server",
+    "start:dev": "JWT=thisisasecret nodemon server",
     "start:dev:sync" : "SYNC=true nodemon server"
   },
   "repository": {
